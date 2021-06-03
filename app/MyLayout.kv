@@ -1,0 +1,35 @@
+<MyLayout>
+    id:my_widget
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width,root.height
+        padding:50
+        spacing:20
+
+        FileChooserIconView:
+            id: filechooser
+            dirselect:True
+            on_selection:my_widget.selected(filechooser.selection)
+
+        GridLayout:
+            cols:4
+
+            Button:
+                id:buttonFull
+                text: 'Convert Fullsize'
+                on_press:my_widget.pressed(7009,90,'fs')
+
+            Button:
+                id:button60
+                text: 'Convert 60%'
+                on_press:my_widget.pressed(4205,90,'ms')
+
+            Button:
+                id:button30
+                text: 'Convert 30%'
+                on_press:my_widget.pressed(2102,90,'ss')
+
+            Button:
+                id:button_ts
+                text: 'Convert 150px'
+                on_press:my_widget.pressed(150,80,'ts')
