@@ -1,7 +1,22 @@
+import ftplib
 import os
 from PIL import Image
 
 yourpath = ''
+
+
+def send_to_ftp(folder):
+    ftp = ftplib.FTP('kislov.myjino.ru', 'kislov_herb', 'fjskibn1')
+    ftp.cwd('jpgimgs')
+
+    for subdir, dirs, files in os.walk(folder):
+        for file in files:
+            file = os.path.join(subdir, file)
+            print("Uploading", file)
+            file_ = open(file, 'rb')
+            name = str(file_).split('\\')[-3] + '||' + str(file_).split('\\')[-1]
+            ftp.storbinary('STOR ' + name[:-2:], file_)
+            file_.close()
 
 
 def convert(wpercent, quality, new_folder):

@@ -11,6 +11,7 @@
             dirselect:True
             on_selection:my_widget.selected(filechooser.selection)
 
+
         GridLayout:
             cols:4
 
@@ -33,3 +34,7 @@
                 id:button_ts
                 text: 'Convert 150px'
                 on_press:my_widget.pressed(150,80,'ts')
+        Button:
+            id:buttonUpload
+            text: 'Upload'
+            on_press:my_widget.upload(filechooser.selection)
